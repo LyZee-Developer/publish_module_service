@@ -15,8 +15,9 @@ import java.time.LocalDateTime;
 @Setter
 @MappedSuperclass
 public class BaseEntity {
-    private LocalDateTime created_at;
-    private String created_by;
-    private LocalDateTime modified_at;
-    private String modified_by;
+    private LocalDateTime createdAt;
+    private String createdBy;
+    private LocalDateTime modifiedAt;
+    private String modifiedBy;
+    private String auditRemark;
 }

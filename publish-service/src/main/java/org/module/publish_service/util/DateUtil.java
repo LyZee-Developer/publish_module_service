@@ -15,7 +15,7 @@ import java.util.Objects;
  * @Date : 10/3/2026 5:55 PM
  */
 @Component
-public class DateUtil {
+public final class DateUtil {
 
     // =========================================================
     // CONSTANTS

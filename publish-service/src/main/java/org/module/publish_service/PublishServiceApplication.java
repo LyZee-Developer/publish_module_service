@@ -1,6 +1,5 @@
 package org.module.publish_service;
 
-import org.module.publish_service.util.DateUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
