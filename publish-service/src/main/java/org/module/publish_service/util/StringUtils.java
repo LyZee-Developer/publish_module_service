@@ -8,13 +8,13 @@ import java.util.Locale;
  * @email : lyleangseng712@gmail.com
  * @date : 10/8/2026 8:35 PM
  */
-public final class StringUtil {
+public final class StringUtils {
 
     private static final SecureRandom RANDOM = new SecureRandom();
     // Ambiguous characters (0/O, 1/l/I) removed for human-readable codes
     private static final String ALPHANUM = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
 
-    private StringUtil() {
+    private StringUtils() {
     }
 
     public static boolean isBlank(String s) {

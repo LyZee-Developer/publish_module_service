@@ -44,6 +44,11 @@ public class GlobalExceptionHandler {
         return new ApiErrorResponse(status, message, LocalDateTime.now(), error);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ApiErrorResponse handleIllegalArgument(IllegalArgumentException ex, HttpServletRequest request) {
+        return new ApiErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), LocalDateTime.now(), Map.of());
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {
 
@@ -71,12 +76,14 @@ public class GlobalExceptionHandler {
         ApiErrorResponse response = new ApiErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now(), null);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
-    /** @Validated on path/query params failed. */
+
+    /**
+     * @Validated on path/query params failed.
+     */
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ApiErrorResponse> handleConstraint(ConstraintViolationException ex) {
         Map<String, Object> errors = new LinkedHashMap<>();
-        ex.getConstraintViolations()
-                .forEach(v -> errors.putIfAbsent(v.getPropertyPath().toString(), v.getMessage()));
+        ex.getConstraintViolations().forEach(v -> errors.putIfAbsent(v.getPropertyPath().toString(), v.getMessage()));
 
         ApiErrorResponse response = apiErrorResponse("Invalid request parameters", HttpStatus.BAD_REQUEST, errors);
         return ResponseEntity.badRequest().body(response);
@@ -98,8 +105,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ApiErrorResponse> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
         ApiErrorResponse response = apiErrorResponse("Invalid value for parameter: " + ex.getName(), HttpStatus.BAD_REQUEST, null);
-        return ResponseEntity.badRequest()
-                .body(response);
+        return ResponseEntity.badRequest().body(response);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)

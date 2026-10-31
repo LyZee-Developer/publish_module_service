@@ -11,12 +11,12 @@ import java.util.Set;
  * @email : lyleangseng712@gmail.com
  * @date : 10/8/2026 10:34 PM
  */
-public final class PaginationUtil {
+public final class PaginationUtils {
     public static final int DEFAULT_PAGE = 1;
     public static final int DEFAULT_SIZE = 20;
     public static final int MAX_SIZE = 100;
 
-    private PaginationUtil() {
+    private PaginationUtils() {
     }
 
     public static Pageable of(Integer page, Integer size) {

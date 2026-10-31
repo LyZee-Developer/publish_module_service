@@ -14,11 +14,11 @@ import java.util.regex.Pattern;
  * Programmatic checks for service-layer logic.
  * For request DTOs prefer Bean Validation annotations (@NotBlank, @Email, @Pattern).
  */
-public final class ValidationUtil {
+public final class ValidationUtils {
     private static final Pattern EMAIL = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
     private static final Pattern PHONE = Pattern.compile("^\\+?[0-9]{8,15}$");
 
-    private ValidationUtil() {
+    private ValidationUtils() {
     }
 
     public static boolean isValidEmail(String email) {
@@ -30,7 +30,7 @@ public final class ValidationUtil {
     }
 
     public static void requireNotBlank(String value, String field) {
-        if (StringUtil.isBlank(value)) {
+        if (StringUtils.isBlank(value)) {
             throw new BusinessException("VALIDATION_ERROR", field + " is required");
         }
     }

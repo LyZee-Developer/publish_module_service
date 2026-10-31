@@ -13,7 +13,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
  * @email : lyleangseng712@gmail.com
  * @date : 10/8/2026 10:33 PM
  */
-public final class JsonUtil {
+public final class JsonUtils {
 
     private static final ObjectMapper MAPPER = JsonMapper.builder()
             .addModule(new JavaTimeModule())
@@ -21,7 +21,7 @@ public final class JsonUtil {
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             .build();
 
-    private JsonUtil() {
+    private JsonUtils() {
     }
 
     public static String toJson(Object value) {
