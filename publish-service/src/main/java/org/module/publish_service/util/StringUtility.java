@@ -2,19 +2,20 @@ package org.module.publish_service.util;
 
 import java.security.SecureRandom;
 import java.util.Locale;
+import java.util.Random;
 
 /**
  * @author : Ly LeangSeng
  * @email : lyleangseng712@gmail.com
  * @date : 10/8/2026 8:35 PM
  */
-public final class StringUtils {
+public final class StringUtility {
 
     private static final SecureRandom RANDOM = new SecureRandom();
     // Ambiguous characters (0/O, 1/l/I) removed for human-readable codes
     private static final String ALPHANUM = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
 
-    private StringUtils() {
+    private StringUtility() {
     }
 
     public static boolean isBlank(String s) {
@@ -46,6 +47,18 @@ public final class StringUtils {
         if (phone == null) return null;
         String cleaned = phone.trim().replaceAll("(?!^\\+)[^0-9]", "");
         return cleaned.isEmpty() ? null : cleaned;
+    }
+
+    public static boolean isNumber(String str) {
+        if (str == null) {
+            return false;
+        }
+        try {
+            Long.parseLong(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**

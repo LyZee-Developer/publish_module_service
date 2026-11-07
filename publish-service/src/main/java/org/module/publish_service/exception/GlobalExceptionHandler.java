@@ -56,6 +56,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
+    @ExceptionHandler(ApiResponseHandler.class)
+    public ResponseEntity<ApiErrorResponse> ApiResponseHandler(ApiResponseHandler ex) {
+
+        ApiErrorResponse response = apiErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST, null);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
     @ExceptionHandler(ConflictException.class)
     public ResponseEntity<ApiErrorResponse> handleConflict(ConflictException ex) {
 

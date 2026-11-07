@@ -2,6 +2,7 @@ package org.module.publish_service.request;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +13,6 @@ import java.util.List;
 @Data
 public class BaseInternalRequestFilter {
     private Boolean isActivate = true;
-    private String search;
-    private List<String> fetches;
+    private String search = "";
+    private List<String> fetches = new ArrayList<>();
 }

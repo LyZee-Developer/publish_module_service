@@ -30,7 +30,7 @@ public final class ValidationUtils {
     }
 
     public static void requireNotBlank(String value, String field) {
-        if (StringUtils.isBlank(value)) {
+        if (StringUtility.isBlank(value)) {
             throw new BusinessException("VALIDATION_ERROR", field + " is required");
         }
     }

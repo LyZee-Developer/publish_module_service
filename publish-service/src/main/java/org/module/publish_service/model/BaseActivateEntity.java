@@ -13,5 +13,5 @@ import lombok.Setter;
 @Setter
 @MappedSuperclass
 public class BaseActivateEntity extends BaseEntity{
-    private Boolean isActivate;
+    private Boolean isActivate = Boolean.TRUE;
 }
